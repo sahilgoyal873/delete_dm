@@ -92,7 +92,7 @@ object practice_delete {
       .build
     val session = cluster.connect(keyspace)
 
-    System.out.println("Cassandra Query Executed:::" + query)
+    System.out.println("Cassandra Query Executed  :::" + query)
 
     if (query != "")
       session.execute(query)

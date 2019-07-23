@@ -10,7 +10,7 @@ import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
 object delete_dm {
 
   var cassHostName = ""
-  var inDir = ""
+  var inDir = Calendar.getInstance.getTime.toInstant.toString
 
   def main(args: Array[String]) {
     try {
@@ -24,10 +24,9 @@ object delete_dm {
       println("[" + Calendar.getInstance().getTime() + "] " + "JOB STARTED")
 
       val reg_name = args(0)
-      inDir = args(1)
-      cassHostName = args(2)
-      var element_list = args(3)
-      val practiceid = args(4)
+      cassHostName = args(1)
+      var element_list = args(2)
+      val practiceid = args(3)
 
       val spark = SparkUtility.getSparkSession(cassHostName)
 
