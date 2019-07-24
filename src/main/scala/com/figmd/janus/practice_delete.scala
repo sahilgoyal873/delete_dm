@@ -66,10 +66,7 @@ object practice_delete {
       .load().repartition(col("practiceid"))
       .filter(col("practiceid").isin(practices: _*))
 
-    df.createOrReplaceTempView(tableName)
     df.cache()
-
-    println("count of " + tableName + "        : " + df.count())
 
     df.write.partitionBy("practiceid").mode(SaveMode.Overwrite).option("header", "true").option("delimiter", "~").csv(s"gs://$prod_bck_save_path/$tableName/")
 
